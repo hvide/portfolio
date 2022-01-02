@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2>TH elements define table headers</h2>
+
+<table>
+    <tr>
+        <th>Isin</th>
+        <th>Name</th>
+        <th>NAV</th>
+        <th>OFC</th>
+        <th>allocation_percent</th>
+        <th>actual_ofc</th>
+        <th>allocation_value</th>
+        <th>actual_ofc_value</th>
+    </tr>
+{% for fund in funds %}
+    <tr>
+        <td>{{ fund.isin }}</td>
+        <td>{{ fund.name }}</td>
+        <td>{{ fund.nav }}</td>
+        <td>{{ fund.ofc }}</td>
+        <td>{{ fund.allocation_percent }}</td>
+        <td>{{ fund.actual_ofc }}</td>
+        <td>£ {{ fund.allocation_value }}</td>
+        <td>£ {{ fund.actual_ofc_value }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<p>To undestand the example better, we have added borders to the table.</p>
+
+</body>
+</html>

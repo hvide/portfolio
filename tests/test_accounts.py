@@ -2,7 +2,6 @@ from unittest import TestCase
 from models.funds import Fund
 from models.accounts import Account
 
-
 funds = [
     Fund(isin="GB00B4PQW151", allocation_percent=50),
     Fund(isin="GB00B5B71Q71", allocation_percent=50),
@@ -11,8 +10,7 @@ funds = [
 
 class TestAccount(TestCase):
     def setUp(self):
-        self.account = Account(provider="Vanguard_S&S", value=100, funds=funds,
-                               annual_fee=0, transaction_fee=0, transaction_number=0)
+        self.account = Account(provider="Vanguard_S&S", value=200, funds=funds)
 
 
 class TestEquityPercent(TestAccount):
@@ -22,7 +20,8 @@ class TestEquityPercent(TestAccount):
 
 class TestBondPercent(TestAccount):
     def test_bond_percent(self):
-        self.assertEqual(self.account.bond_percent(), 10)
+        self.assertEqual(self.account.bond_percent(), 100 -
+                         self.account.equity_percent())
 
 
 class TestTotActualOfc(TestAccount):
@@ -32,4 +31,4 @@ class TestTotActualOfc(TestAccount):
 
 class TestTotActualOfcValue(TestAccount):
     def test_tot_actual_ofc_value(self):
-        self.assertEqual(self.account.tot_actual_ofc_value(200), 0.32)
+        self.assertEqual(self.account.tot_actual_ofc_value(), 0.32)

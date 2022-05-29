@@ -1,0 +1,110 @@
+---
+funds:
+  - name: Vanguard LifeStrategy 80% Equity Fund A Acc
+    isin: GB00B4PQW151
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000MLUQ
+    fund_type: 80
+
+  - name: Vanguard FTSE Global All Cap Index Fund GBP Acc
+    isin: GB00BD3RZ582
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000XXVV
+    fund_type: 100
+
+  - name: Vanguard U.S. Equity Index Fund GBP Acc
+    isin: GB00B5B71Q71
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003YD7
+    fund_type: 100
+
+  - name: Vanguard FTSE Developed World ex-U.K. Equity Index Fund GBP Acc
+    isin: GB00B59G4Q73
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003YD3
+    fund_type: 100
+
+  - name: Vanguard FTSE U.K. All Share Index Unit Trust GBP Acc
+    isin: GB00B3X7QG63
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000LWVH
+    fund_type: 100
+
+  - name: Vanguard Emerging Markets Stock Index Fund GBP Acc
+    isin: IE00B50MZ724
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VEA
+    fund_type: 100
+
+  - name: Vanguard S&P 500 UCITS ETF USD Accumulation
+    isin: IE00BFMXXD54
+    url: https://www.morningstar.co.uk/uk/etf/snapshot/snapshot.aspx?id=0P0001HGTC
+    fund_type: 100
+
+  - name: Vanguard FTSE Developed Europe ex-U.K. Equity Index Fund GBP Acc
+    isin: GB00B5B71H80
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003YD5
+    fund_type: 100
+
+  - name: Vanguard Japan Stock Index Fund GBP Acc
+    isin: IE00B50MZ948
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VE6
+    fund_type: 100
+
+  - name: Vanguard Pacific ex-Japan Stock Index Fund GBP Acc
+    isin: IE00B523L313
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VE8
+    fund_type: 100
+
+  - name: Vanguard FTSE 100 UCITS ETF GBP Accumulation
+    isin: IE00BFMXYP42
+    url: https://www.morningstar.co.uk/uk/etf/snapshot/snapshot.aspx?id=0P0001HGTE
+    fund_type: 100
+
+  - name: Vanguard FTSE 250 UCITS ETF GBP Accumulation
+    isin: IE00BFMXVQ44
+    url: https://www.morningstar.co.uk/uk/etf/snapshot/snapshot.aspx?id=0P0001HGTD
+    fund_type: 100
+
+  - name: Vanguard Global Bond Index Fund GBP Hedged Acc
+    isin: IE00B50W2R13
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VEC
+    fund_type: 0
+
+  - name: Vanguard U.K. Government Bond Index Fund GBP Acc
+    isin: IE00B1S75374
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VEE
+    fund_type: 0
+
+  - name: Vanguard U.K. Inflation-Linked Gilt Index Fund GBP Acc
+    isin: GB00B45Q9038
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000M0M8
+    fund_type: 0
+
+  - name: Vanguard U.K. Investment Grade Bond Index Fund GBP Acc
+    isin: IE00B1S74Q32
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000001W0U
+    fund_type: 0
+
+  - name: HSBC FTSE All-World Index Fund Accumulation S
+    isin: GB00BF0GWY02
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000ZISB
+    fund_type: 100
+
+  - name: Vanguard LifeStrategy 100% Equity Fund A Acc
+    isin: GB00B41XG308
+    url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000MLUS
+    fund_type: 100
+# urls:
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000MLUQ # Vanguard LifeStrategy 80% Equity Fund A Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000XXVV # Vanguard FTSE Global All Cap Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003YD7 # Vanguard U.S. Equity Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003YD3 # Vanguard FTSE Developed World ex-U.K. Equity Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000LWVH # Vanguard FTSE U.K. All Share Index Unit Trust GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VEA # Vanguard Emerging Markets Stock Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/etf/snapshot/snapshot.aspx?id=0P0001HGTC # Vanguard S&P 500 UCITS ETF USD Accumulation
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003YD5 # Vanguard FTSE Developed Europe ex-U.K. Equity Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VE6 # Vanguard Japan Stock Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VE8 # Vanguard Pacific ex-Japan Stock Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/etf/snapshot/snapshot.aspx?id=0P0001HGTE # Vanguard FTSE 100 UCITS ETF GBP Accumulation
+#   - https://www.morningstar.co.uk/uk/etf/snapshot/snapshot.aspx?id=0P0001HGTD # Vanguard FTSE 250 UCITS ETF GBP Accumulation
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VEC # Vanguard Global Bond Index Fund GBP Hedged Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000003VEE # Vanguard U.K. Government Bond Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000M0M8 # Vanguard U.K. Inflation-Linked Gilt Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F000001W0U # Vanguard U.K. Investment Grade Bond Index Fund GBP Acc
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000ZISB # HSBC FTSE All-World Index Fund Accumulation S
+#   - https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000MLUS # Vanguard LifeStrategy 100% Equity Fund A Acc

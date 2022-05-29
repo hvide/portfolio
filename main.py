@@ -6,8 +6,11 @@ from datetime import datetime
 import sys
 import os
 
+from config import ROUND_N
+
 from models.funds import Fund
-from models.accounts import Account
+from models.vanguard import Vanguard
+from models.iweb import Iweb
 from models.portfolios import Portfolio
 
 __author__ = 'Davide Gilardoni'
@@ -28,7 +31,7 @@ screen_formatter = logging.Formatter(
 screen = logging.StreamHandler(sys.stdout)
 screen.setFormatter(screen_formatter)
 logger.addHandler(screen)
-n = 2  # Number of decimals
+# n = 2  # Number of decimals
 PRINT_FUND = False
 PRINT_ACCOUNT = True
 PRINT_PORTFOLIO = True
@@ -47,23 +50,29 @@ def main():
         print('########################')
         # print(prtf)
         logger.info("Portfolio name: %s" % prtf)
+
         accounts_list = []
         for provider, funds in acc.items():
+
             funds_list = []
             for fund, allocation_percent in funds[1].items():
-                # print(funds[1][fund])
+
                 funds_list.append(Fund(
                     isin=fund, allocation_percent=allocation_percent))
 
             account_value = funds[0]['value']
-            account = Account(provider, account_value, funds_list)
-            if 'annual_fee' in funds[0]:
-                account.annual_fee = funds[0]['annual_fee']
-            if 'transaction_fee' in funds[0]:
-                account.transaction_fee = funds[0]['transaction_fee']
-            if 'transaction_number' in funds[0]:
-                account.transaction_number = funds[0]['transaction_number']
+
+            if provider == "Vanguard_S&S":
+                account = Vanguard(provider, account_value, funds_list)
+            elif provider == "iWeb":
+                account = Iweb(provider, account_value, funds_list,
+                               funds[0]['transaction_number'])
+            else:
+                logger.error(f"The provider: { provider } wasn't recognized")
+                sys.exit(1)
+
             accounts_list.append(account)
+
             # df = pd.DataFrame([fund.to_dict(account_value) for fund in funds_list])
 
             # template = jinja2_load('fund.j2')
@@ -74,13 +83,13 @@ def main():
                 # print("Account name: %s" % account.provider)
                 print("Account value: £ %s" % account.value)
                 print("tot_actual_ofc: %s" %
-                      round(account.tot_actual_ofc(), n))
+                      round(account.tot_actual_ofc(), ROUND_N))
                 print("tot_actual_ofc_value: £ %s" %
-                      round(account.tot_actual_ofc_value(account_value), n))
+                      round(account.tot_actual_ofc_value(), ROUND_N))
                 print("Account tot_annual_cost: £ %s" %
-                      account.tot_annual_cost(account.value))
+                      account.tot_annual_cost())
                 print("Account Equity: %s  | Bond: %s" % (
-                    round(account.equity_percent(), n), round(account.bond_percent(), n)))
+                    round(account.equity_percent(), ROUND_N), round(account.bond_percent(), ROUND_N)))
                 print("Account unalocated percent: %s" %
                       account.unallocated_percent())
                 if PRINT_FUND == True:
@@ -92,9 +101,9 @@ def main():
         if PRINT_PORTFOLIO == True:
             portfolio = Portfolio(prtf, accounts_list)
             print("Portfolio tot_annual_cost: £ %s" %
-                  round(portfolio.tot_annual_cost(), n))
+                  round(portfolio.tot_annual_cost(), ROUND_N))
             print("Portfolio Equity: %s  | Bond: %s" % (
-                round(portfolio.equity_percent(), n), round(portfolio.bond_percent(), n)))
+                round(portfolio.equity_percent(), ROUND_N), round(portfolio.bond_percent(), ROUND_N)))
             print("Portfolio unalocated percent: %s" %
                   round(portfolio.unallocated_percent(), 4))
 
@@ -116,10 +125,15 @@ def main():
             print("Ref: %s" % portfolio.account_a_equity_percent_target())
             print("Actual: %s" % portfolio.account_a_equity_percent_actual())
             print("Delta: %s" % portfolio.account_a_equity_percent_delta())
-            print("Increase Equity (Formula to be fixed): %s" %
-                  portfolio.per_fund_equity_increase())
-            print("Increase Bond (Formula to be fixed): %s" %
-                  portfolio.per_fund_bond_increase())
+            print("Target Value (Formula to be fixed):")
+
+            target_value = portfolio.per_fund_target_percent()
+            if target_value is not None:
+                for tv in target_value:
+                    print(tv)
+
+            # print("Increase Bond (Formula to be fixed): %s" %
+            #       portfolio.per_fund_bond_increase())
 
             # print(p_ref - pa)
 

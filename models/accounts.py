@@ -1,8 +1,9 @@
 import typing
+from .funds import Fund
 
 
 class Account:
-    def __init__(self, provider, value, funds, annual_fee=0, transaction_fee=0, transaction_number=0):
+    def __init__(self, provider: str, value: float, funds: typing.List) -> object:
         """
         Collection of fund
         :param provider: Who is providing the fund
@@ -12,11 +13,8 @@ class Account:
         self.provider = provider
         self.value = value
         self.funds = funds
-        self.annual_fee = annual_fee
-        self.transaction_fee = transaction_fee
-        self.transaction_number = transaction_number
 
-    def tot_actual_ofc(self):
+    def tot_actual_ofc(self) -> float:
         """
         OFC of the overall account by summing the actual_ofc together
         :return: (float)
@@ -24,41 +22,24 @@ class Account:
         x = [fund.actual_ofc() for fund in self.funds]
         return sum(x)
 
-    def tot_actual_ofc_value(self, value):
+    def tot_actual_ofc_value(self) -> float:
         """
         Total of the actual OFC in £ by summing actual_ofc_value together
         :param value: Total value of the account in £
         :return: (float)
         """
-        x = [fund.actual_ofc_value(value) for fund in self.funds]
+        x = [fund.actual_ofc_value(self.value) for fund in self.funds]
         return sum(x)
 
-    def equity_percent(self):
+    def equity_percent(self) -> float:
         x = [(fund.allocation_percent / 100) *
              fund.fund_type for fund in self.funds]
         return sum(x)
 
-    def bond_percent(self):
+    def bond_percent(self) -> float:
         x = [(fund.allocation_percent / 100) * fund.bond_percent()
              for fund in self.funds]
         return sum(x)
 
-    def unallocated_percent(self):
+    def unallocated_percent(self) -> float:
         return 100 - (self.equity_percent() + self.bond_percent())
-
-    def tot_transaction_fee(self):
-        """
-        Sum of all transaction value
-        :return:
-        """
-        return self.transaction_fee * self.transaction_number
-
-    def annual_cost(self):
-        """
-        Annual cost of the account, percentage of the total value
-        :return: (float)
-        """
-        return self.value / 100 * self.annual_fee
-
-    def tot_annual_cost(self, value):
-        return self.annual_cost() + self.tot_actual_ofc_value(value) + self.tot_transaction_fee()

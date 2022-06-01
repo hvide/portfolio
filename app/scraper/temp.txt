@@ -1,0 +1,7 @@
+{
+  'name':
+  'isin':
+  'transaction_number':
+  'weight':
+  'account_id':
+}

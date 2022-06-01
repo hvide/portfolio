@@ -1,3 +1,4 @@
+from unittest import result
 from utils import yml_load, jinja2_load
 from pprint import pprint
 import pandas as pd
@@ -12,6 +13,13 @@ from models.funds import Fund
 from models.vanguard import Vanguard
 from models.iweb import Iweb
 from models.portfolios import Portfolio
+
+from database.base import Session
+from database.connector import Connector
+from database import db_funds
+
+import scraper
+
 
 __author__ = 'Davide Gilardoni'
 __email__ = 'dade_gila@hotmail.com'
@@ -31,13 +39,54 @@ screen_formatter = logging.Formatter(
 screen = logging.StreamHandler(sys.stdout)
 screen.setFormatter(screen_formatter)
 logger.addHandler(screen)
-# n = 2  # Number of decimals
 PRINT_FUND = False
 PRINT_ACCOUNT = True
+
 PRINT_PORTFOLIO = True
 
 
-def main():
+def fund_info_update():
+    # funds = scraper.get_info()
+
+    session = Session()
+    db = Connector(session)
+
+    funds = db.select_all(db_funds.Fund)
+
+    results = []
+
+    for fund in funds:
+
+        data = scraper.get_info(fund.url)
+
+        # data = {
+        # 'nav': fund['nav'],
+        # 'ofc': fund['ofc'],
+        # }
+
+        results.append(db.update(db_funds.Fund, {'isin': fund.isin}, data))
+
+    return results
+
+
+def fund_info_add():
+
+    session = Session()
+    db = Connector(session)
+
+    funds_info_load_yml = yml_load('funds_info_load.yml')
+
+    data = []
+
+    for fund in funds_info_load_yml:
+        data.append(db.insert(db_funds.Fund, fund))
+
+    logger.info(f"Data added to the database.")
+    return data
+
+
+def report():
+
     pd.set_option('display.max_columns', None)
     pd.set_option('display.max_rows', None)
     pd.set_option('display.width', 1000)
@@ -143,4 +192,24 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+
+    while True:
+        mode = input(
+            "Choose the program mode (report / update / reload) [report]: ").lower()
+        if mode == "":
+            mode = "report"
+            break
+        elif mode == "update":
+            break
+        elif mode == "reload":
+            break
+
+    if mode == "update":
+        fund_info_update()
+        pass
+
+    elif mode == "report":
+        report()
+
+    elif mode == "reload":
+        print(fund_info_add())

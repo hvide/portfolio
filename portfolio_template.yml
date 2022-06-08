@@ -2,36 +2,36 @@
 test1:
   Vanguard_S&S:
     - value: 5000
-    - GB00B5B71Q71: 19.3  # Vanguard U.S. Equity Index Fund GBP Acc
-      GB00B59G4Q73: 19.1  # Vanguard FTSE Developed World ex-U.K. Equity Index Fund GBP Acc
-      GB00B3X7QG63: 19.1  # Vanguard FTSE U.K. All Share Index Unit Trust GBP Acc
-      IE00B50MZ724: 6.2  # Vanguard Emerging Markets Stock Index Fund GBP Acc
-      IE00BFMXXD54: 5.7  # Vanguard S&P 500 UCITS ETF USD Accumulation
-      GB00B5B71H80: 5.2  # Vanguard FTSE Developed Europe ex-U.K. Equity Index Fund GBP Acc
-      IE00B50MZ948: 2.6  # Vanguard Japan Stock Index Fund GBP Acc
-      IE00B523L313: 1.3  # Vanguard Pacific ex-Japan Stock Index Fund GBP Acc
-      IE00BFMXYP42: 0.7  # Vanguard FTSE 100 UCITS ETF GBP Accumulation
-      IE00BFMXVQ44: 0.1  # Vanguard FTSE 250 UCITS ETF GBP Accumulation
-      IE00B50W2R13: 14.4  # Vanguard Global Bond Index Fund GBP Hedged Acc
-      IE00B1S75374: 2.5  # Vanguard U.K. Government Bond Index Fund GBP Acc
-      GB00B45Q9038: 2.2  # Vanguard U.K. Inflation-Linked Gilt Index Fund GBP Acc
-      IE00B1S74Q32: 1.6  # Vanguard U.K. Investment Grade Bond Index Fund GBP Acc
+    - GB00B5B71Q71: 19.3 # Vanguard U.S. Equity Index Fund GBP Acc
+      GB00B59G4Q73: 19.1 # Vanguard FTSE Developed World ex-U.K. Equity Index Fund GBP Acc
+      GB00B3X7QG63: 19.1 # Vanguard FTSE U.K. All Share Index Unit Trust GBP Acc
+      IE00B50MZ724: 6.2 # Vanguard Emerging Markets Stock Index Fund GBP Acc
+      IE00BFMXXD54: 5.7 # Vanguard S&P 500 UCITS ETF USD Accumulation
+      GB00B5B71H80: 5.2 # Vanguard FTSE Developed Europe ex-U.K. Equity Index Fund GBP Acc
+      IE00B50MZ948: 2.6 # Vanguard Japan Stock Index Fund GBP Acc
+      IE00B523L313: 1.3 # Vanguard Pacific ex-Japan Stock Index Fund GBP Acc
+      IE00BFMXYP42: 0.7 # Vanguard FTSE 100 UCITS ETF GBP Accumulation
+      IE00BFMXVQ44: 0.1 # Vanguard FTSE 250 UCITS ETF GBP Accumulation
+      IE00B50W2R13: 14.4 # Vanguard Global Bond Index Fund GBP Hedged Acc
+      IE00B1S75374: 2.5 # Vanguard U.K. Government Bond Index Fund GBP Acc
+      GB00B45Q9038: 2.2 # Vanguard U.K. Inflation-Linked Gilt Index Fund GBP Acc
+      IE00B1S74Q32: 1.6 # Vanguard U.K. Investment Grade Bond Index Fund GBP Acc
   iWeb:
     - value: 3000
-    - GB00B4PQW151: 100  # Vanguard LifeStrategy 80% Equity Fund A Acc
+    - GB00B4PQW151: 100 # Vanguard LifeStrategy 80% Equity Fund A Acc
 
-test2:
-  iWeb:
-  - value: 10000
-  - GB00B4PQW151: 50  # Vanguard LifeStrategy 80% Equity Fund A Acc
+# test2:
+#   iWeb:
+#   - value: 10000
+#   - GB00B4PQW151: 50  # Vanguard LifeStrategy 80% Equity Fund A Acc
 
-current:
-  Vanguard_S&S:
-    - value: 5000
-    - GB00B4PQW151: 100  # Vanguard LifeStrategy 80% Equity Fund A Acc
-  iWeb:
-    - value: 3000
-    - GB00B4PQW151: 100  # Vanguard LifeStrategy 80% Equity Fund A Acc
+# current:
+#   Vanguard_S&S:
+#     - value: 5000
+#     - GB00B4PQW151: 100  # Vanguard LifeStrategy 80% Equity Fund A Acc
+#   iWeb:
+#     - value: 3000
+#     - GB00B4PQW151: 100  # Vanguard LifeStrategy 80% Equity Fund A Acc
 
 #  GB00B4PQW151: 0  # Vanguard LifeStrategy 80% Equity Fund A Acc
 #  GB00BD3RZ582: 0  # Vanguard FTSE Global All Cap Index Fund GBP Acc

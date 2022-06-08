@@ -6,12 +6,11 @@ from sqlalchemy import create_engine
 import os
 import sys
 import logging
-from database.db_funds import Fund
-from database.db_accounts import Account
-from database.db_portfolios import Portfolio
+from database.db_tables import *
 from database.base import engine, Base
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import MultipleResultsFound
+import pandas as pd
 
 
 logger = logging.getLogger()
@@ -106,3 +105,27 @@ class Connector:
 
     def session_close(self):
         self.session.close()
+
+    def add_portfolio(self, csv):
+
+        df = pd.read_csv(csv)
+
+        instances = []
+
+        for i, row in df.iterrows():
+
+            portfolio_id = self.select(
+                Portfolio, {'name': row['portfolio']}).id
+            account_id = self.select(Account, {'name': row['account']}).id
+            fund_id = self.select(Fund, {'isin': row['fund']}).id
+
+            data = {
+                'portfolio_id': portfolio_id,
+                'account_id': account_id,
+                'fund_id': fund_id,
+                'weight': row['weight']
+            }
+
+            instances.append(self.insert(Selection, data))
+
+        return instances

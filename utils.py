@@ -8,8 +8,7 @@ def yml_load(x):
         with open(x) as f:
             return yaml.load(f, Loader=yaml.FullLoader)
     except FileNotFoundError as e:
-        print(str(e) + '\nCreate a "vpws.yml" file in the current working directoy.'
-                       '\nOr specify the path to your .yml file with the "-c" option')
+        print(str(e) + 'The YAML file could not be found')
         sys.exit(0)
 
 

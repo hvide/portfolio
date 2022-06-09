@@ -62,13 +62,13 @@ class Portfolio:
         f = []
         for fund in self.accounts[0].funds:
 
-            if fund.fund_type == 100:
+            if fund.equity_pct == 100:
                 target_percent = (fund.allocation_percent / self.accounts[0].equity_percent(
                 ) * self.account_a_equity_percent_target())
 
                 target_value = self.accounts[0].value * target_percent / 100
 
-            elif fund.fund_type == 0:
+            elif fund.equity_pct == 0:
                 target_percent = (fund.allocation_percent / self.accounts[0].bond_percent() * (
                     100 - self.account_a_equity_percent_target()))
 
@@ -87,3 +87,6 @@ class Portfolio:
             f.append(data)
 
         return f
+
+    def __repr__(self) -> str:
+        return f"<Portfolio {self.name}>"

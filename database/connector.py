@@ -99,33 +99,34 @@ class Connector:
         logger.debug(f'The record {instance} has been updated succesfully.')
         return instance
 
-    # def delete(self, data):
-    #     self.session.delete(data)
-    #     self.session.commit()
+    def delete(self, object):
+        self.session.delete(object)
+        self.session.commit()
+        return True
 
     def session_close(self):
         self.session.close()
 
-    def add_portfolio(self, csv):
+    # def add_portfolio(self, csv):
 
-        df = pd.read_csv(csv)
+    #     df = pd.read_csv(csv)
 
-        instances = []
+    #     instances = []
 
-        for i, row in df.iterrows():
+    #     for i, row in df.iterrows():
 
-            portfolio_id = self.select(
-                Portfolio, {'name': row['portfolio']}).id
-            account_id = self.select(Account, {'name': row['account']}).id
-            fund_id = self.select(Fund, {'isin': row['fund']}).id
+    #         portfolio_id = self.select(
+    #             Portfolio, {'name': row['portfolio']}).id
+    #         account_id = self.select(Account, {'name': row['account']}).id
+    #         fund_id = self.select(Fund, {'isin': row['fund']}).id
 
-            data = {
-                'portfolio_id': portfolio_id,
-                'account_id': account_id,
-                'fund_id': fund_id,
-                'weight': row['weight']
-            }
+    #         data = {
+    #             'portfolio_id': portfolio_id,
+    #             'account_id': account_id,
+    #             'fund_id': fund_id,
+    #             'weight': row['weight']
+    #         }
 
-            instances.append(self.insert(Selection, data))
+    #         instances.append(self.insert(Selection, data))
 
-        return instances
+    #     return instances

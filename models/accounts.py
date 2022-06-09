@@ -33,7 +33,7 @@ class Account:
 
     def equity_percent(self) -> float:
         x = [(fund.allocation_percent / 100) *
-             fund.fund_type for fund in self.funds]
+             fund.equity_pct for fund in self.funds]
         return sum(x)
 
     def bond_percent(self) -> float:
@@ -43,3 +43,6 @@ class Account:
 
     def unallocated_percent(self) -> float:
         return 100 - (self.equity_percent() + self.bond_percent())
+
+    def __repr__(self) -> str:
+        return f"<Account {self.provider}>"

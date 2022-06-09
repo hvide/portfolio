@@ -4,11 +4,11 @@ from database.base import Base
 from sqlalchemy import Column, ForeignKey, Table, Integer, String, Float
 from sqlalchemy.orm import relationship
 
-association_table = Table('association',
-                          Base.metadata,
-                          Column('fund_id', ForeignKey('funds.id')),
-                          Column('account_id', ForeignKey('accounts.id'))
-                          )
+# association_table = Table('association',
+#                           Base.metadata,
+#                           Column('fund_id', ForeignKey('funds.id')),
+#                           Column('account_id', ForeignKey('accounts.id'))
+#                           )
 
 
 class Portfolio(Base):
@@ -27,17 +27,17 @@ class Portfolio(Base):
 class Account(Base):
     __tablename__ = 'accounts'
     id = Column(Integer, primary_key=True)
-    # type = Column(String(30), nullable=False)
     value: Float = Column(Float)
+    transaction_number = Column(Integer)
 
-    funds = relationship('Fund', secondary=association_table,
-                         back_populates='accounts')
+    portfolio_id = Column(Integer, ForeignKey("portfolios.id"))
+    portfolio = relationship('Portfolio', back_populates='accounts')
 
     account_types_id = Column(Integer, ForeignKey("account_types.id"))
     account_type = relationship('AccountType', back_populates='accounts')
 
-    portfolio_id = Column(Integer, ForeignKey("portfolios.id"))
-    portfolio = relationship('Portfolio', back_populates='accounts')
+    funds = relationship(
+        'Fund', back_populates='account', cascade='all, delete')
 
     def __repr__(self) -> str:
         return f"<Account {self.id}>"
@@ -48,7 +48,6 @@ class AccountType(Base):
     id = Column(Integer, primary_key=True)
     type = Column(String(30), nullable=False, unique=True)
     transaction_fee = Column(Float)
-    transaction_number = Column(Integer)
     annual_fee = Column(Float)
 
     accounts = relationship(
@@ -61,16 +60,32 @@ class AccountType(Base):
 class Fund(Base):
     __tablename__ = 'funds'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    isin = Column(String(12), nullable=False, unique=True)
-    # name = Column(String(200))
-    # nav = Column(Float)
-    ofc = Column(Float)
-    # fund_type = Column(Integer)
-    # url = Column(String(200))
+    id = Column(Integer, primary_key=True)
+    weight = Column(Float, nullable=False)
 
-    accounts = relationship(
-        'Account', secondary=association_table, back_populates='funds', cascade='all, delete')
+    account_id = Column(Integer, ForeignKey("accounts.id"))
+    account = relationship('Account', back_populates='funds')
+
+    fund_types_id = Column(Integer, ForeignKey("fund_types.id"))
+    fund_type = relationship('FundType', back_populates='funds')
+
+    def __repr__(self) -> str:
+        return f"<AccountType {self.fund_type}>"
+
+
+class FundType(Base):
+    __tablename__ = 'fund_types'
+
+    id = Column(Integer, primary_key=True)
+    isin = Column(String(12), nullable=False, unique=True)
+    name = Column(String(200))
+    nav = Column(Float)
+    ofc = Column(Float)
+    equity_pct = Column(Integer)
+    url = Column(String(200))
+
+    funds = relationship(
+        'Fund', back_populates='fund_type', cascade='all, delete')
 
     def __repr__(self) -> str:
         return f"<Fund {self.isin}>"

@@ -9,6 +9,7 @@ import logging
 from database.base import Session
 from database.connector import Connector
 from database.db_tables import *
+from populate import populate
 
 import pandas as pd
 
@@ -17,12 +18,32 @@ def main():
     session = Session()
     db = Connector(session)
 
+    # populate(db)
+
+    portfolio = db.select(Portfolio, {'id': 1})
+
+    db.session.delete(portfolio)
+
+    # account_type = db.select(
+    #     AccountType,
+    #     {'type': 'vanguard'})
+
+    # account = Account(value=123123,
+    #                   account_type=account_type,
+    #                   portfolio=portfolio
+    #                   )
+
+    # prt_load = yml_load('prt_load.yml')
+
     # account_type = db.session.query(
     #     AccountType).filter(AccountType.id == 2).first()
 
-    fund = db.session.query(Fund).filter(Fund.isin == "BBBB").first()
+    # fund = db.session.query(Fund).filter(Fund.isin == "BBBB").first()
+
+    # fund = db.select(Fund, {"isin": "AAAA"})
 
     # print(fund)
+    # pprint(prt_load)
 
     # portfolio = Portfolio(name="portfolio_2")
     # account = Account(
@@ -35,8 +56,6 @@ def main():
 
     # portfolio = db.session.query(
     #     Portfolio).filter(Portfolio.id == 2).first()
-
-    db.session.delete(fund)
 
     # portfolio.accounts.append(account)
     # account.funds.append(fund)

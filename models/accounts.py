@@ -32,12 +32,12 @@ class Account:
         return sum(x)
 
     def equity_percent(self) -> float:
-        x = [(fund.allocation_percent / 100) *
+        x = [(fund.weight / 100) *
              fund.equity_pct for fund in self.funds]
         return sum(x)
 
     def bond_percent(self) -> float:
-        x = [(fund.allocation_percent / 100) * fund.bond_percent()
+        x = [(fund.weight / 100) * fund.bond_percent()
              for fund in self.funds]
         return sum(x)
 

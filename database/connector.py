@@ -1,16 +1,10 @@
 import typing
 from sqlalchemy_utils import database_exists
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-import os
-import sys
 import logging
 from database.db_tables import *
 from database.base import engine, Base
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import MultipleResultsFound
-import pandas as pd
 
 
 logger = logging.getLogger()
@@ -26,34 +20,6 @@ class Connector:
 
         self.session = session
         logger.info(f'Connector initialized!')
-
-    # def insert(self, model, **kwargs):
-
-    #     instance = self.session.query(model).filter_by(**kwargs).one_or_none()
-
-    #     if instance:
-    #         logger.debug(
-    #             f'This record: Device ID: {instance.isin} - Hostname: {instance.name} already exist.')
-    #         return instance, False
-
-    #     else:
-
-    #         instance = model(**kwargs)
-
-    #         try:
-    #             self.session.add(instance)
-    #             self.session.commit()
-    #             logger.debug(f'The record {instance} was created succesfully.')
-    #             return instance, True
-
-    #         except Exception as e:  # The actual exception depends on the specific database so we catch all exceptions. This is similar to the official documentation: https://docs.sqlalchemy.org/en/latest/orm/session_transaction.html
-    #             self.session.rollback()
-    #             instance = self.session.query(model).filter_by(**kwargs).one()
-    #             return instance, False
-    #             print(str(e))
-
-        # else:
-        #     return instance, True
 
     def select(self, model, filter: typing.Dict):
         try:
@@ -85,9 +51,6 @@ class Connector:
 
     def update(self, model, filter: typing.Dict, data: typing.Dict):
 
-        # instance = self.session.query(
-        # model).filter_by(isin=isin).one_or_none()
-
         instance = self.session.query(
             model).filter_by(**filter).one_or_none()
 
@@ -106,27 +69,3 @@ class Connector:
 
     def session_close(self):
         self.session.close()
-
-    # def add_portfolio(self, csv):
-
-    #     df = pd.read_csv(csv)
-
-    #     instances = []
-
-    #     for i, row in df.iterrows():
-
-    #         portfolio_id = self.select(
-    #             Portfolio, {'name': row['portfolio']}).id
-    #         account_id = self.select(Account, {'name': row['account']}).id
-    #         fund_id = self.select(Fund, {'isin': row['fund']}).id
-
-    #         data = {
-    #             'portfolio_id': portfolio_id,
-    #             'account_id': account_id,
-    #             'fund_id': fund_id,
-    #             'weight': row['weight']
-    #         }
-
-    #         instances.append(self.insert(Selection, data))
-
-    #     return instances

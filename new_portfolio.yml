@@ -1,0 +1,48 @@
+---
+# portfolio:
+#   name: base_account_weight
+# accounts:
+#   vanguard:
+#     info:
+#       value: 10375.18
+#     funds:
+#       GB00B5B71Q71: 19.7 # Vanguard U.S. Equity Index Fund GBP Acc
+#       GB00B59G4Q73: 19.1 # Vanguard FTSE Developed World ex-U.K. Equity Index Fund GBP Acc
+#       GB00B3X7QG63: 18.9 # Vanguard FTSE U.K. All Share Index Unit Trust GBP Acc
+#       IE00B50MZ724: 6.4 # Vanguard Emerging Markets Stock Index Fund GBP Acc
+#       IE00BFMXXD54: 5.9 # Vanguard S&P 500 UCITS ETF USD Accumulation
+#       GB00B5B71H80: 5.1 # Vanguard FTSE Developed Europe ex-U.K. Equity Index Fund GBP Acc
+#       IE00B50MZ948: 2.5 # Vanguard Japan Stock Index Fund GBP Acc
+#       IE00B523L313: 1.4 # Vanguard Pacific ex-Japan Stock Index Fund GBP Acc
+#       IE00BFMXYP42: 0.8 # Vanguard FTSE 100 UCITS ETF GBP Accumulation
+#       IE00BFMXVQ44: 0.1 # Vanguard FTSE 250 UCITS ETF GBP Accumulation
+#       IE00B50W2R13: 14.1 # Vanguard Global Bond Index Fund GBP Hedged Acc
+#       IE00B1S75374: 2.4 # Vanguard U.K. Government Bond Index Fund GBP Acc
+#       GB00B45Q9038: 2.0 # Vanguard U.K. Inflation-Linked Gilt Index Fund GBP Acc
+#       IE00B1S74Q32: 1.6 # Vanguard U.K. Investment Grade Bond Index Fund GBP Acc
+#   iweb:
+#     info:
+#       value: 19240.31
+#       transaction_number: 2
+#     funds:
+#       GB00BF0GWY02: 100 # HSBC FTSE All-World Index Fund Accumulation S
+
+portfolio:
+  name: template_4
+accounts:
+  vanguard:
+    info:
+      value: 9702.21
+    funds:
+      GB00B59G4Q73: 62.5 # anguard FTSE Developed World ex-U.K. Equity Index Fund GBP Acc
+      GB00B3X7QG63: 4.2 # Vanguard FTSE U.K. All Share Index Unit Trust GBP Acc
+      IE00B50MZ724: 10.3
+      # IE00B1S74Q32: 13 # Vanguard U.K. Investment Grade Bond Index Fund GBP Acc
+      # IE00B9M1BB17: 10 # Vanguard U.K. Short-Term Investment Grade Bond Index Fund GBP Acc
+      IE00B50W2R13: 23 #  Vanguard Global Bond Index Fund GBP Hedged Acc
+  iweb:
+    info:
+      value: 18904.51
+      transaction_number: 0
+    funds:
+      GB00BF0GWY02: 100 # HSBC FTSE All-World Index Fund Accumulation S

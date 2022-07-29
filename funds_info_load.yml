@@ -131,3 +131,10 @@
   ofc: 0.22
   equity_pct: 100
   url: https://www.morningstar.co.uk/uk/etf/snapshot/snapshot.aspx?id=0P0000WA5P
+
+- isin: IE00B9M1BB17
+  name: Vanguard U.K. Short-Term Investment Grade Bond Index Fund GBP Acc
+  nav: 279.69
+  ofc: 0.22
+  equity_pct: 0
+  url: https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=F00000PZUV

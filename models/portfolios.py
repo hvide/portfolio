@@ -63,13 +63,13 @@ class Portfolio:
         for fund in self.accounts[0].funds:
 
             if fund.equity_pct == 100:
-                target_percent = (fund.allocation_percent / self.accounts[0].equity_percent(
+                target_percent = (fund.weight / self.accounts[0].equity_percent(
                 ) * self.account_a_equity_percent_target())
 
                 target_value = self.accounts[0].value * target_percent / 100
 
             elif fund.equity_pct == 0:
-                target_percent = (fund.allocation_percent / self.accounts[0].bond_percent() * (
+                target_percent = (fund.weight / self.accounts[0].bond_percent() * (
                     100 - self.account_a_equity_percent_target()))
 
                 target_value = self.accounts[0].value * target_percent / 100
@@ -83,6 +83,7 @@ class Portfolio:
                 'isin': fund.isin,
                 'target_percent': round(target_percent, ROUND_N),
                 'target_value': round(target_value, ROUND_N),
+                'name': fund.name,
             }
             f.append(data)
 
